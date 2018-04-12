@@ -1,0 +1,12 @@
+body {
+  padding: 8px 10px 10px 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a:hover{
+  color: #00B7FF;
+  text-decoration: none;
+}
+.box{
+
+}
