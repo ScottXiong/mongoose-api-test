@@ -3,18 +3,19 @@ var router = express.Router();
 var MyModel= require('./model.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  console.log(MyModel)
+router.post('/', function(req, res, next) {
   var doc= new MyModel({
-    tag: 'polite',
-    txt:"Attached is the ai file for the flat art of the PDQ.  Thank you in advance for everything!  And, thank you for your patience."
+    tag: req.body.tag,
+    txt:req.body.txt,
+    createTime:new Date().getTime()
   });
+  console.log(req)
   doc.save(function(err,docs){
     if (err) {
       console.error('failed to save');
     }
     console.log(docs)
-    res.render('insert', { title: 'insert' });
+    res.redirect('/');
   });
 });
 

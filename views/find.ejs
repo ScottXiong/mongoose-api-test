@@ -1,4 +1,25 @@
 <% include ./head.ejs %>
     <h1 style="margin-bottom:30px;"><a href="/"><i class="fa fa-home fa-lg"></i>&nbsp;Home</a>&nbsp;<%= title %></h1>
-    <% include ./dashboard.ejs %>
+    <hr>
+<% var doc=data.result %>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr class="success" style="font-weight:bold;font-size:22px;">
+            <td style="width:5%;text-align:center;">#</td>
+            <td style="width:20%;text-align:center;">tag</td>
+            <td style="width:67%;text-align:center">sentences</td>
+            <td style="width:8%;">operate</td>
+          </tr>
+        </thead>
+
+<% for(var i=0;i<doc.length;i++){%>
+        <tr>
+          <td class="text-center"><%= i+1 %></td>
+          <td><%= doc[i].tag %></td>
+          <% var txt=doc[i].txt.length>=100?doc[i].txt.substr(0,105):doc[i].txt%>
+          <td><%=txt%>......</td>
+          <td><i class="fa fa-remove" style="margin-left:18px;margin-right:10px;"></i> <i class="fa fa-edit"></i></td>
+        </tr>
+<%}%>
+    </table>
 <% include ./bottom.ejs %>
